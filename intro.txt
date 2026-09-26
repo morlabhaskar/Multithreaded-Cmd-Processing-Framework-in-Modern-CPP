@@ -1,0 +1,113 @@
+---------------------------------------------------------------------------------------------------------------------------
+                                                    COMPILE & EXECUTION
+--------------------------------------------------------------------------------------------------------------------------
+
+PS C:\Users\morla\OneDrive\Desktop\multi> mkdir build
+
+    Directory: C:\Users\morla\OneDrive\Desktop\multi
+
+Mode                 LastWriteTime         Length Name                                                                                    
+----                 -------------         ------ ----                                                                                    
+d-----        26-09-2026     10:24                build                                                                                   
+
+PS C:\Users\morla\OneDrive\Desktop\multi> cd build
+PS C:\Users\morla\OneDrive\Desktop\multi\build>  & "C:\Program Files\CMake\bin\cmake.exe" .. -G "MinGW Makefiles"
+-- The CXX compiler identification is GNU 6.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/MinGW/bin/c++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (4.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/morla/OneDrive/Desktop/multi/build
+PS C:\Users\morla\OneDrive\Desktop\multi\build> & "C:\Program Files\CMake\bin\cmake.exe" --build .   
+[ 11%] Building CXX object CMakeFiles/multi.dir/main.cpp.obj
+[ 22%] Building CXX object CMakeFiles/multi.dir/source/Camera.cpp.obj
+[ 33%] Building CXX object CMakeFiles/multi.dir/source/CommandInvoker.cpp.obj
+[ 44%] Building CXX object CMakeFiles/multi.dir/source/StartCameraCommand.cpp.obj
+[ 55%] Building CXX object CMakeFiles/multi.dir/source/StopCameraCommand.cpp.obj
+[ 66%] Building CXX object CMakeFiles/multi.dir/source/ResetCameraCommand.cpp.obj
+[ 77%] Building CXX object CMakeFiles/multi.dir/source/CaptureFrameCommand.cpp.obj
+[ 88%] Building CXX object CMakeFiles/multi.dir/source/SetExposureCommand.cpp.obj
+[100%] Linking CXX executable multi.exe
+CMakeFiles\multi.dir/objects.a(SetExposureCommand.cpp.obj):SetExposureCommand.cpp:(.text+0x0): multiple definition of `CaptureFrameCommand::CaptureFrameCommand(Camera&)'
+CMakeFiles\multi.dir/objects.a(CaptureFrameCommand.cpp.obj):CaptureFrameCommand.cpp:(.text+0x0): first defined here
+CMakeFiles\multi.dir/objects.a(SetExposureCommand.cpp.obj):SetExposureCommand.cpp:(.text+0x0): multiple definition of `CaptureFrameCommand::CaptureFrameCommand(Camera&)'
+CMakeFiles\multi.dir/objects.a(CaptureFrameCommand.cpp.obj):CaptureFrameCommand.cpp:(.text+0x0): first defined here
+CMakeFiles\multi.dir/objects.a(SetExposureCommand.cpp.obj):SetExposureCommand.cpp:(.text+0x5c): multiple definition of `CaptureFrameCommand::execute()'
+CMakeFiles\multi.dir/objects.a(CaptureFrameCommand.cpp.obj):CaptureFrameCommand.cpp:(.text+0x5c): first defined here
+CMakeFiles\multi.dir/objects.a(main.cpp.obj):main.cpp:(.text+0x95): undefined reference to `SetExposureCommand::SetExposureCommand(Camera&, int)'
+CMakeFiles\multi.dir/objects.a(main.cpp.obj):main.cpp:(.text$_ZN18SetExposureCommandD1Ev[__ZN18SetExposureCommandD1Ev]+0xa): undefined reference to `vtable for SetExposureCommand'
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\multi.dir\build.make:220: recipe for target 'multi.exe' failed
+mingw32-make.exe[2]: *** [multi.exe] Error 1
+CMakeFiles\Makefile2:85: recipe for target 'CMakeFiles/multi.dir/all' failed
+mingw32-make.exe[1]: *** [CMakeFiles/multi.dir/all] Error 2
+Makefile:89: recipe for target 'all' failed
+mingw32-make.exe: *** [all] Error 2
+PS C:\Users\morla\OneDrive\Desktop\multi\build> ls
+
+
+    Directory: C:\Users\morla\OneDrive\Desktop\multi\build
+
+
+Mode                 LastWriteTime         Length Name                                                                                    
+----                 -------------         ------ ----                                                                                    
+d-----        26-09-2026     10:25                CMakeFiles                                                                              
+-a----        26-09-2026     10:24          15459 CMakeCache.txt                                                                          
+-a----        26-09-2026     10:24           2073 cmake_install.cmake                                                                     
+-a----        26-09-2026     10:24          12901 Makefile                                                                                
+
+
+PS C:\Users\morla\OneDrive\Desktop\multi\build>  & "C:\Program Files\CMake\bin\cmake.exe" .. -G "MinGW Makefiles"
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/morla/OneDrive/Desktop/multi/build
+PS C:\Users\morla\OneDrive\Desktop\multi\build> & "C:\Program Files\CMake\bin\cmake.exe" --build .               
+[ 11%] Building CXX object CMakeFiles/multi.dir/source/SetExposureCommand.cpp.obj
+[ 22%] Linking CXX executable multi.exe
+[100%] Built target multi
+PS C:\Users\morla\OneDrive\Desktop\multi\build> ls                                                               
+
+
+    Directory: C:\Users\morla\OneDrive\Desktop\multi\build
+
+
+Mode                 LastWriteTime         Length Name                                                                                    
+----                 -------------         ------ ----                                                                                    
+d-----        26-09-2026     10:29                CMakeFiles                                                                              
+-a----        26-09-2026     10:24          15459 CMakeCache.txt                                                                          
+-a----        26-09-2026     10:29           2073 cmake_install.cmake                                                                     
+-a----        26-09-2026     10:29          12901 Makefile                                                                                
+-a----        26-09-2026     10:29          63063 multi.exe                                                                               
+
+
+PS C:\Users\morla\OneDrive\Desktop\multi\build> ./multi.exe
+========== Program Started ==========
+Camera object created
+StartCameraCommand object created
+StopCameraCommand object created
+ResetCameraCommand object created
+CaptureFrameCommand object created
+SetExposureCommand object created
+CommandInvoker object created
+
+--- Start Camera ---
+Camera started
+
+--- Set Exposure ---
+Exposure set to 80
+
+--- Capture Frame ---
+Frame captured
+
+--- Reset Camera ---
+Camera reset
+
+--- Stop Camera ---
+Camera stopped
+
+========== Program Finished ==========
+
+----------------------------------------------------------------------------------------------------------------------------
